@@ -56,6 +56,7 @@ public class main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_empresa = new javax.swing.JTree();
         jButton4 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jd_crearempleado = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -74,6 +75,19 @@ public class main extends javax.swing.JFrame {
         jm_eliminar = new javax.swing.JMenuItem();
         jm_detalles = new javax.swing.JMenuItem();
         jm_contratar = new javax.swing.JMenuItem();
+        jd_mod = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
+        tf_nombreemple1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        tf_correo1 = new javax.swing.JTextField();
+        cb_tipoempleado1 = new javax.swing.JComboBox<>();
+        tf_cargo1 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jdc_naci1 = new com.toedter.calendar.JDateChooser();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -204,6 +218,13 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("log-out");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_ingresadoLayout = new javax.swing.GroupLayout(jd_ingresado.getContentPane());
         jd_ingresado.getContentPane().setLayout(jd_ingresadoLayout);
         jd_ingresadoLayout.setHorizontalGroup(
@@ -233,6 +254,10 @@ public class main extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(42, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ingresadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addContainerGap())
         );
         jd_ingresadoLayout.setVerticalGroup(
             jd_ingresadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,14 +267,15 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jl_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jd_ingresadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ingresadoLayout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addGap(36, 36, 36)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7))
         );
 
         jLabel10.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
@@ -337,6 +363,11 @@ public class main extends javax.swing.JFrame {
 
         jm_modificar.setText("modificar");
         jm_modificar.setToolTipText("");
+        jm_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_modificarActionPerformed(evt);
+            }
+        });
         pm_menu.add(jm_modificar);
 
         jm_eliminar.setText("eliminar");
@@ -362,6 +393,89 @@ public class main extends javax.swing.JFrame {
             }
         });
         pm_menu.add(jm_contratar);
+
+        jLabel17.setText("cargo");
+
+        jLabel18.setText("tipo");
+
+        cb_tipoempleado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ingeniero", "medico", "estudiante", "licenciado", "maestro" }));
+
+        jButton6.setText("mod");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jLabel19.setText("Modificar ");
+
+        jLabel20.setText("nombre");
+
+        jLabel21.setText("fecha de nacimiento");
+
+        jLabel22.setText("correo");
+
+        javax.swing.GroupLayout jd_modLayout = new javax.swing.GroupLayout(jd_mod.getContentPane());
+        jd_mod.getContentPane().setLayout(jd_modLayout);
+        jd_modLayout.setHorizontalGroup(
+            jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modLayout.createSequentialGroup()
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel19))
+                    .addGroup(jd_modLayout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jButton6))
+                    .addGroup(jd_modLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addGap(41, 41, 41)
+                        .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_nombreemple1)
+                            .addComponent(tf_correo1)
+                            .addComponent(tf_cargo1)
+                            .addComponent(jdc_naci1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(cb_tipoempleado1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        jd_modLayout.setVerticalGroup(
+            jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addGap(22, 22, 22)
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(tf_nombreemple1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel21)
+                    .addComponent(jdc_naci1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(tf_correo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel17))
+                    .addGroup(jd_modLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_cargo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_tipoempleado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -478,6 +592,7 @@ public class main extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        int bandera=0;
         for (int i = 0; i < empresas.size(); i++) {
             try {
                 if (empresas.get(i).getID() == Integer.valueOf(tf_ID.getText()) && (empresas.get(i).getPin().equals(pf_pin.getText()))) {
@@ -486,19 +601,19 @@ public class main extends javax.swing.JFrame {
                     jl_empresa.setModel(actual.getModelolista());
                     jl_ID.setText(Integer.toString(actual.getID()));
                     jl_nombre.setText(actual.getNombre());
+                    bandera=1;
                     jd_ingresado.setModal(true);
                     jd_ingresado.pack();
                     jd_ingresado.setLocationRelativeTo(this);
                     jd_ingresado.setVisible(true);
 
-                } else {
-                    JOptionPane.showMessageDialog(this, "El usuario no existe o la contraseña esta mala.");
-
-                }
+                } 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Se ingreso una letra donde no se deberia");
             }
 
+        } if (bandera==0) {
+            JOptionPane.showMessageDialog(this, "El usuario no existe o no ingreso la contraseña correcta");
         }
 
 
@@ -566,10 +681,12 @@ public class main extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(jd_ingresado, "no se puede contratar a si mismo");
                     } else {
                         nodo_seleccionado.add(p);
+                        actual.setCapital(actual.getCapital()-((Empleado)p.getUserObject()).getSalario());
                         modeloarbol.reload();
                     }
                 } else {
                     nodo_seleccionado.add(p);
+                    actual.setCapital(actual.getCapital()-((Empleado)p.getUserObject()).getSalario());
                     modeloarbol.reload();
                 }
 
@@ -577,7 +694,7 @@ public class main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jd_ingresado, "no hay contratista seleccionado en el arbol");
 
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(jd_ingresado, "no se alcanza el salario :v");
         }
 
@@ -597,38 +714,97 @@ public class main extends javax.swing.JFrame {
 
     private void jm_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_eliminarActionPerformed
         // TODO add your handling code here:
-         if (jl_empresa.getSelectedIndex() >= 0) {
-                DefaultListModel modelo = (DefaultListModel) jl_empresa.getModel();
-                modelo.remove(jl_empresa.getSelectedIndex());
-                jl_empresa.setModel(modelo);
-                JOptionPane.showMessageDialog(this, "Eliminado exitosamente");
-            }
+        if (jl_empresa.getSelectedIndex() >= 0) {
+            DefaultListModel modelo = (DefaultListModel) jl_empresa.getModel();
+            modelo.remove(jl_empresa.getSelectedIndex());
+            jl_empresa.setModel(modelo);
+            JOptionPane.showMessageDialog(this, "Eliminado exitosamente");
+        }
     }//GEN-LAST:event_jm_eliminarActionPerformed
 
     private void jm_detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_detallesActionPerformed
         // TODO add your handling code here:
         DefaultListModel modelolista = (DefaultListModel) jl_empresa.getModel();
-        String nombre=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getNombre();
-        String Dates=new SimpleDateFormat("dddd/MM/YYYY").format(((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getNacimiento());
-        String correo=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getCorreo();
-        String cargo=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getCargo();
-        String salario=Integer.toString(((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getSalario());
-        String imprimir="nombre";
-        imprimir+=" ";
-        imprimir+=nombre;
-        imprimir+="\n";
-        imprimir+="fecha de nacimiento ";
-        imprimir+=Dates;
-        imprimir+="\n";
-        imprimir+="correo electronico ";
-        imprimir+=correo;
-        imprimir+="cargo ";
-        imprimir+=cargo;
-        imprimir+="\n";
-        imprimir+="salario ";
-        imprimir+=salario;
+        String nombre = ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getNombre();
+        String Dates = new SimpleDateFormat("dddd/MM/YYYY").format(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getNacimiento());
+        String correo = ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getCorreo();
+        String cargo = ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getCargo();
+        String salario = Integer.toString(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getSalario());
+        String imprimir = "nombre";
+        imprimir += " ";
+        imprimir += nombre;
+        imprimir += "\n";
+        imprimir += "fecha de nacimiento ";
+        imprimir += Dates;
+        imprimir += "\n";
+        imprimir += "correo electronico ";
+        imprimir += correo;
+        imprimir += "cargo ";
+        imprimir += cargo;
+        imprimir += "\n";
+        imprimir += "salario ";
+        imprimir += salario;
         JOptionPane.showMessageDialog(jd_ingresado, imprimir);
     }//GEN-LAST:event_jm_detallesActionPerformed
+
+    private void jm_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_modificarActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel modelolista = (DefaultListModel) jl_empresa.getModel();
+        tf_nombreemple1.setText(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getNombre());
+        jdc_naci1.setDate(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getNacimiento());
+        tf_correo1.setText(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getCorreo());
+        tf_cargo1.setText(((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getCargo());
+        if (((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getSalario() == 22000) {
+            cb_tipoempleado1.setSelectedIndex(0);
+        } else if (((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getSalario() == 18000) {
+            cb_tipoempleado1.setSelectedIndex(1);
+        } else if (((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getSalario() == 7600) {
+            cb_tipoempleado1.setSelectedIndex(2);
+        } else if (((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).getSalario() == 12000) {
+            cb_tipoempleado1.setSelectedIndex(3);
+        } else {
+            cb_tipoempleado1.setSelectedIndex(4);
+        }
+        jd_mod.setModal(true);
+        jd_mod.pack();
+        jd_mod.setLocationRelativeTo(jd_ingresado);
+        jd_mod.setVisible(true);
+    }//GEN-LAST:event_jm_modificarActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        DefaultListModel modelolista = (DefaultListModel) jl_empresa.getModel();
+        ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setNombre(tf_nombreemple1.getText());
+        ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setNacimiento(jdc_naci1.getDate());
+        ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setCorreo(tf_correo1.getText());
+        ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setCargo(tf_cargo1.getText());
+        if (cb_tipoempleado1.getSelectedItem().equals("ingeniero")) {
+            ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setSalario(22000);
+
+        } else if (cb_tipoempleado1.getSelectedItem().equals("medico")) {
+            ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setSalario(18000);
+
+        } else if (cb_tipoempleado1.getSelectedItem().equals("estudiante")) {
+            ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setSalario(7600);
+
+        } else if (cb_tipoempleado1.getSelectedItem().equals("licenciado")) {
+            ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setSalario(12000);
+
+        } else {
+            ((Empleado) modelolista.get(jl_empresa.getSelectedIndex())).setSalario(2000);
+
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+         DefaultTreeModel modeloarbol = (DefaultTreeModel) jt_empresa.getModel();
+         DefaultListModel modelolista = (DefaultListModel) jl_empresa.getModel();
+         actual.setModeloarbol(modeloarbol);
+         actual.setModelolista(modelolista);
+         actual=null;
+         jd_ingresado.setVisible(false);
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -668,11 +844,14 @@ public class main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JComboBox<String> cb_tipoempleado;
+    private javax.swing.JComboBox<String> cb_tipoempleado1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -681,7 +860,13 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -694,7 +879,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crear;
     private javax.swing.JDialog jd_crearempleado;
     private javax.swing.JDialog jd_ingresado;
+    private javax.swing.JDialog jd_mod;
     private com.toedter.calendar.JDateChooser jdc_naci;
+    private com.toedter.calendar.JDateChooser jdc_naci1;
     private javax.swing.JLabel jl_ID;
     private javax.swing.JList<String> jl_empresa;
     private javax.swing.JLabel jl_nombre;
@@ -708,11 +895,14 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu pm_menu;
     private javax.swing.JTextField tf_ID;
     private javax.swing.JTextField tf_cargo;
+    private javax.swing.JTextField tf_cargo1;
     private javax.swing.JTextField tf_correo;
+    private javax.swing.JTextField tf_correo1;
     private javax.swing.JTextField tf_idc;
     private javax.swing.JTextField tf_localizacion;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombreemple;
+    private javax.swing.JTextField tf_nombreemple1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Empresa> empresas = new ArrayList();
     Empresa actual;
