@@ -101,11 +101,13 @@ public class Empresa {
     public void setModelolista(DefaultListModel modelolista) {
         this.modelolista = modelolista;
     }
-    
 
     @Override
     public String toString() {
-        return nombre;
+        return "nombre=" + nombre + "\n capital=" + capital + "\n fundacion=" + fundacion + "\n ubicacion=" + ubicacion + "\n ID=" + ID + "\n pin=" + pin + "\n modeloarbol=" + modeloarbol + "\n modelolista=" + modelolista ;
     }
+    
+
+    
     
 }

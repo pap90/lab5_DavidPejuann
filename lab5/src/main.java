@@ -1,4 +1,5 @@
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
@@ -339,9 +340,19 @@ public class main extends javax.swing.JFrame {
         pm_menu.add(jm_modificar);
 
         jm_eliminar.setText("eliminar");
+        jm_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_eliminarActionPerformed(evt);
+            }
+        });
         pm_menu.add(jm_eliminar);
 
         jm_detalles.setText("detalles");
+        jm_detalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_detallesActionPerformed(evt);
+            }
+        });
         pm_menu.add(jm_detalles);
 
         jm_contratar.setText("contratar");
@@ -583,6 +594,41 @@ public class main extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jt_empresaMouseClicked
+
+    private void jm_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_eliminarActionPerformed
+        // TODO add your handling code here:
+         if (jl_empresa.getSelectedIndex() >= 0) {
+                DefaultListModel modelo = (DefaultListModel) jl_empresa.getModel();
+                modelo.remove(jl_empresa.getSelectedIndex());
+                jl_empresa.setModel(modelo);
+                JOptionPane.showMessageDialog(this, "Eliminado exitosamente");
+            }
+    }//GEN-LAST:event_jm_eliminarActionPerformed
+
+    private void jm_detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_detallesActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel modelolista = (DefaultListModel) jl_empresa.getModel();
+        String nombre=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getNombre();
+        String Dates=new SimpleDateFormat("dddd/MM/YYYY").format(((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getNacimiento());
+        String correo=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getCorreo();
+        String cargo=((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getCargo();
+        String salario=Integer.toString(((Empleado)modelolista.get(jl_empresa.getSelectedIndex())).getSalario());
+        String imprimir="nombre";
+        imprimir+=" ";
+        imprimir+=nombre;
+        imprimir+="\n";
+        imprimir+="fecha de nacimiento ";
+        imprimir+=Dates;
+        imprimir+="\n";
+        imprimir+="correo electronico ";
+        imprimir+=correo;
+        imprimir+="cargo ";
+        imprimir+=cargo;
+        imprimir+="\n";
+        imprimir+="salario ";
+        imprimir+=salario;
+        JOptionPane.showMessageDialog(jd_ingresado, imprimir);
+    }//GEN-LAST:event_jm_detallesActionPerformed
 
     /**
      * @param args the command line arguments
