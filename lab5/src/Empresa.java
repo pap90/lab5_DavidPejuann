@@ -1,6 +1,7 @@
 
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 /*
@@ -20,8 +21,8 @@ public class Empresa {
     private String ubicacion;
     private int ID;
     private String pin;
-    private DefaultTreeModel modeloarbol;
-    private DefaultListModel modelolista;
+    private DefaultTreeModel modeloarbol=new DefaultTreeModel(new DefaultMutableTreeNode());
+    private DefaultListModel modelolista=new DefaultListModel();
 
     public Empresa() {
     }
@@ -84,6 +85,23 @@ public class Empresa {
     public void setPin(String pin) {
         this.pin = pin;
     }
+
+    public DefaultTreeModel getModeloarbol() {
+        return modeloarbol;
+    }
+
+    public void setModeloarbol(DefaultTreeModel modeloarbol) {
+        this.modeloarbol = modeloarbol;
+    }
+
+    public DefaultListModel getModelolista() {
+        return modelolista;
+    }
+
+    public void setModelolista(DefaultListModel modelolista) {
+        this.modelolista = modelolista;
+    }
+    
 
     @Override
     public String toString() {
